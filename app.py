@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import os
-from utils.risk_analysis import calculate_risk_score
-from utils.report_generator import generate_weekly_report
 
 # Configuración de la página
 st.set_page_config(page_title="AgroIntel - Dashboard", layout="wide")

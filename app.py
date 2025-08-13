@@ -10,11 +10,15 @@ st.set_page_config(page_title="AgroIntel - Dashboard", layout="wide")
 
 # Función para cargar datos
 def load_data():
-    oportunidades = pd.read_csv('data/oportunidades.csv')
-    amenazas = pd.read_csv('data/amenazas.csv')
-    tendencias = pd.read_csv('data/tendencias.csv')
-    pipeline = pd.read_csv('data/pipeline.csv')
-    return oportunidades, amenazas, tendencias, pipeline
+    try:
+        oportunidades = pd.read_csv('data/oportunidades.csv')
+        amenazas = pd.read_csv('data/amenazas.csv')
+        tendencias = pd.read_csv('data/tendencias.csv')
+        pipeline = pd.read_csv('data/pipeline.csv')
+        return oportunidades, amenazas, tendencias, pipeline
+    except Exception as e:
+        st.error(f"Error cargando datos: {str(e)}")
+        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
 
 def main():
     st.title("🌾 AgroIntel - Dashboard Inteligencia de Mercado")
